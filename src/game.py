@@ -2,6 +2,7 @@ import pygame
 
 from config import *
 from colors import *
+from figurines.common_figures import *
 
 class Game:
     def __init__(self):
@@ -10,10 +11,15 @@ class Game:
 
         self.playing = True
 
+    def load(self):
+        self.all_sprites_group = pygame.sprite.LayeredUpdates()   # all sprites in the game
+        self.piece = Soldier(self)
 
     def main(self):
+        self.load()
         while self.playing:
             self.event()
+            self.update()
             self.render()
             pygame.display.update()
             self.clock.tick(FPS)
@@ -22,6 +28,10 @@ class Game:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.playing = False
+    
+    def update(self):
+        self.all_sprites_group.update()
 
     def render(self):
         self.screen.fill(CLOUDBLUE)
+        self.all_sprites_group.draw(self.screen)
