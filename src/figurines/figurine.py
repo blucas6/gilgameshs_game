@@ -13,6 +13,6 @@ class Figurine(pygame.sprite.Sprite):
         self.image = img
         self._layer = FIGURINE_LAYER
 
-        self.pos_in_window = (0,0)
+        self.pos_in_window = [0,0]
         self.rect = self.image.get_rect()
 
