@@ -9,7 +9,7 @@ class Soldier(Figurine):
         self.img_file = "../sprites/soldier.png"
         self.img = pygame.image.load(self.img_file).convert_alpha()
         self.w = TILESIZE_W
-        self.h = TILESIZE_W
+        self.h = TILESIZE_H
 
         Figurine.__init__(self, self.g, self.w, self.h, self.img, self.g.all_sprites_group)
 
