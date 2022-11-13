@@ -1,5 +1,6 @@
 import pygame
 from config import *
+from figurines.figurine import Team
 
 class Board:
     def __init__(self, game, num, stx, sty):
@@ -10,19 +11,15 @@ class Board:
         self.Board_Turn = 0
         self.Playing = False
         self.drawBoard()
+        self.player1List = []
+        self.player2List = []
+        self.figurinePositionArray =[ [0]*BOARD_SIZE_W for i in range(BOARD_SIZE_H)]
 
     def drawBoard(self):
         for x in range(self.boardNum):
             for y in range(self.boardNum):
                 Tile(self.game, self.startx + x * TILESIZE_W, self.starty + y * TILESIZE_H)
 
-    def NewBoardGame(self):
-        self.Board_Turn = 0
-        self.Playing = True
-
-    def update(self):
-        if self.Playing:
-            self.Board_Turn += 1
 
 class Tile (pygame.sprite.Sprite):
     def __init__(self, g, x, y):

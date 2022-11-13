@@ -17,3 +17,6 @@ FIGURINE_MOVE_ENERGY = 5
 
 BOARD_POS = [100, 100]
 BOARD_TURN_SPEED = 10   # number of frames for 1 turn
+
+BOARD_SIZE_W = 5
+BOARD_SIZE_H = 5

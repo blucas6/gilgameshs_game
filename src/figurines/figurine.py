@@ -19,9 +19,9 @@ class Team(Enum):
     PLAYER_2 = 2
 
 class Figurine(pygame.sprite.Sprite):
-    def __init__(self, game, width, height, img, groups, stx_board, sty_board, side):
+    def __init__(self, game, width, height, img, groups, stx_board, sty_board, team):
         pygame.sprite.Sprite.__init__(self, groups)
-        self.side = side
+        self.team = team
         self.game = game
         self.width = width
         self.height = height
