@@ -8,12 +8,16 @@ class Board:
         self.startx = stx
         self.starty = sty
         self.drawBoard()
+        self.player1List = []
+        self.player2List = []
 
     def drawBoard(self):
         for x in range(self.boardNum):
             for y in range(self.boardNum):
                 Tile(self.game, self.startx + x * TILESIZE_W, self.starty + y * TILESIZE_H)
-
+    def addFigurine(self, figurine):
+        self.player1List.append(figurine)
+        pass
 
 class Tile (pygame.sprite.Sprite):
     def __init__(self, g, x, y):
