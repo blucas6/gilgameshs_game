@@ -36,9 +36,11 @@ class Figurine(pygame.sprite.Sprite):
         self.board_dest = [stx_board,sty_board]
 
         self.state = State.IDLE
-        self.state = self.ChangeState(State.MOVING)
 
-    def update(self):
+        self.Energy = 0
+
+    def update(self, board_turn):
+        self.Energy += board_turn
         if self.state == State.IDLE:
             self.Idle()
         elif self.state == State.MOVING:
@@ -47,15 +49,13 @@ class Figurine(pygame.sprite.Sprite):
     def ChangeState(self, state):
         if state != self.state:
             if state == State.MOVING:
-                
-                self.board_dest = deepcopy(self.current_pos_board)
-                self.board_dest[0] += 1
+                self.board_dest[0], self.board_dest[1] = self.NextDestination()
                 self.board_src = deepcopy(self.current_pos_board)
             return state
 
     def move(self):
         if self.board_dest == self.current_pos_board:
-            self.ChangeState(State.IDLE)
+            self.state = self.ChangeState(State.IDLE)
         else:
             cx = self.board_dest[0] - self.board_src[0]
             cy = self.board_dest[1] - self.board_src[1]
@@ -77,6 +77,14 @@ class Figurine(pygame.sprite.Sprite):
 
     def Moving(self):
         pass
+
+    def NextDestination(self):
+        path = aStar([int(self.current_pos_board[0]),int(self.current_pos_board[1])], [4,4], 5, 5, [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]])
+        if path == -1:
+            print("Error: A* failure")
+        # else:
+        #     print(path[1])  # A* returns a list - first coordinate is the current pos, second is the next dest
+        return path[1]
 
 
 
