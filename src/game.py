@@ -3,6 +3,7 @@ import pygame
 from config import *
 from colors import *
 from figurines.common_figures import *
+from board import Board
 
 class Game:
     def __init__(self):
@@ -14,6 +15,7 @@ class Game:
     def load(self):
         self.all_sprites_group = pygame.sprite.LayeredUpdates()   # all sprites in the game
         self.piece = Soldier(self)
+        self.board = Board(self, 3)
 
     def main(self):
         self.load()
