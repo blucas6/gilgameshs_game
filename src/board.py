@@ -8,7 +8,7 @@ class Board:
         self.boardNum = num
         self.startx = stx
         self.starty = sty
-        self.Board_Turn = 0
+        self.Board_Turn = 0 
         self.Playing = False
         self.drawBoard()
         self.player1List = []
@@ -19,11 +19,25 @@ class Board:
         for x in range(self.boardNum):
             for y in range(self.boardNum):
                 Tile(self.game, self.startx + x * TILESIZE_W, self.starty + y * TILESIZE_H)
+    def addFigurine(self, figurine):
+        if (figurine.team == Team.PLAYER_1):
+            self.player1List.append(figurine)
+        elif (figurine.team == Team.PLAYER_2):
+            self.player2List.append(figurine)
+
+    def getFigurineCoordinates(self):
+        self.figurinePositionArray =[ [0]*BOARD_SIZE_H for i in range(BOARD_SIZE_W)]
+        for p in self.player1List:
+            self.figurinePositionArray[round(p.current_pos_board[0])][round(p.current_pos_board[1])] = 1   
+                  
+        for b in self.player2List:
+            self.figurinePositionArray[round(b.current_pos_board[0])][round(b.current_pos_board[1])] = 1    
+        return self.figurinePositionArray
 
     def NewBoardGame(self):
         self.Board_Turn = 0
         self.Playing = True
-
+    
     def update(self):
         if self.Playing:
             self.Board_Turn += 1
