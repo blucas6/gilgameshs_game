@@ -17,6 +17,9 @@ class Game:
         self.piece = Soldier(self, 2, 2, Team.PLAYER_1)
         self.piece2 = Soldier(self, 1, 0, Team.PLAYER_2)
         self.board = Board(self, 5, BOARD_POS[0], BOARD_POS[1])
+        self.board.addFigurine(self.piece)
+        self.board.addFigurine(self.piece2)
+
 
     def main(self):
         self.load()
