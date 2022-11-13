@@ -20,6 +20,13 @@ class Board:
             for y in range(self.boardNum):
                 Tile(self.game, self.startx + x * TILESIZE_W, self.starty + y * TILESIZE_H)
 
+    def NewBoardGame(self):
+        self.Board_Turn = 0
+        self.Playing = True
+
+    def update(self):
+        if self.Playing:
+            self.Board_Turn += 1
 
 class Tile (pygame.sprite.Sprite):
     def __init__(self, g, x, y):
