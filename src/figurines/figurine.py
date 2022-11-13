@@ -14,9 +14,14 @@ class State(Enum):
     ULTI = 4
     DEATH = 5
 
+class Team(Enum):
+    PLAYER_1 = 1
+    PLAYER_2 = 2
+
 class Figurine(pygame.sprite.Sprite):
-    def __init__(self, game, width, height, img, groups, stx_board, sty_board):
+    def __init__(self, game, width, height, img, groups, stx_board, sty_board, side):
         pygame.sprite.Sprite.__init__(self, groups)
+        self.side = side
         self.game = game
         self.width = width
         self.height = height
@@ -42,6 +47,7 @@ class Figurine(pygame.sprite.Sprite):
     def ChangeState(self, state):
         if state != self.state:
             if state == State.MOVING:
+                
                 self.board_dest = deepcopy(self.current_pos_board)
                 self.board_dest[0] += 1
                 self.board_src = deepcopy(self.current_pos_board)

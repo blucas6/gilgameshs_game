@@ -14,8 +14,8 @@ class Game:
 
     def load(self):
         self.all_sprites_group = pygame.sprite.LayeredUpdates()   # all sprites in the game
-        self.piece = Soldier(self, 2, 2)
-        self.piece2 = Soldier(self, 1, 0)
+        self.piece = Soldier(self, 2, 2, Team.PLAYER_1)
+        self.piece2 = Soldier(self, 1, 0, Team.PLAYER_2)
         self.board = Board(self, 5, BOARD_POS[0], BOARD_POS[1])
 
     def main(self):
