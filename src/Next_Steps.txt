@@ -1,0 +1,10 @@
+-- ROAD MAP --
+
+1. Teams - figurines have sides
+2. A* implemented - move figurine from one spot to enemy
+3. Implement turns - energy for moving and attacking
+4. Figurine health and attack damage
+5. Attack function - damage other figurine
+6. Hurt function - other figurine reacts to incoming damage
+7. Finalize states - move from idle to move to attack back to idle
+8. Setup start function to place figurines
