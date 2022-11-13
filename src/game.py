@@ -12,11 +12,13 @@ class Game:
 
         self.playing = True
 
+        self.frames = 0
+
     def load(self):
         self.all_sprites_group = pygame.sprite.LayeredUpdates()   # all sprites in the game
         self.piece = Soldier(self, 2, 2, Team.PLAYER_1)
         self.piece2 = Soldier(self, 1, 0, Team.PLAYER_2)
-        self.board = Board(self, 5, BOARD_POS[0], BOARD_POS[1])
+        self.Board = Board(self, 5, BOARD_POS[0], BOARD_POS[1])
 
     def main(self):
         self.load()
@@ -33,7 +35,12 @@ class Game:
                 self.playing = False
     
     def update(self):
-        self.all_sprites_group.update()
+        self.frames += 1
+        if self.frames > BOARD_TURN_SPEED:
+            self.frames = 0
+            self.Board.Board_Turn += 1
+        self.Board.update()
+        self.all_sprites_group.update(self.Board.Board_Turn)
 
     def render(self):
         self.screen.fill(CLOUDBLUE)

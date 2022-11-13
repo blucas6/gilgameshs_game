@@ -25,4 +25,7 @@ class Soldier(Figurine):
         self.move()
 
     def Idle(self):
-        pass
+        print(self.Energy)
+        if self.Energy > FIGURINE_MOVE_ENERGY:
+            self.Energy = 0
+            self.state = self.ChangeState(State.MOVING)

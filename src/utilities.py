@@ -58,19 +58,19 @@ def tracePath(cellDetails, dest):
 def aStar(src, dest, gridw, gridh, grid):
     if not isValid(src, gridw, gridh):
         print("ERROR: Astar - invalid src")
-        return
+        return -1
     
     if not isValid(dest, gridw, gridh):
         print("ERROR: Astar - invalid dest")
-        return
+        return -1
 
     if not isUnblocked(src, grid, gridw, gridh) or not isUnblocked(dest, grid, gridw, gridh):
         print("ERROR: Astar - src or dest blocked")
-        return
+        return -1
     
     if isDestination(src, dest):
         print("NOTE: src at dest")
-        return
+        return -1
 
     # closed list boolean 2d array showing that no cell is included
     closed_list = []
