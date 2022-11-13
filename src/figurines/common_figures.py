@@ -13,6 +13,7 @@ class Soldier(Figurine):
         self.img = pygame.image.load(self.img_file).convert_alpha()
         self.w = TILESIZE_W
         self.h = TILESIZE_H
+        self._layer = FIGURINE_LAYER
         groups = self.g.all_sprites_group
         stx = 100
         sty = 100

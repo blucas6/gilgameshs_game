@@ -23,7 +23,6 @@ class Figurine(pygame.sprite.Sprite):
         self.image = pygame.Surface([self.width, self.height])
         self.image.blit(img, (0,0), (0,0,self.width, self.height))
         self.image.set_colorkey(VOID)
-        self._layer = FIGURINE_LAYER
         self.rect = self.image.get_rect()
         self.rect.x = stx
         self.rect.y = sty
