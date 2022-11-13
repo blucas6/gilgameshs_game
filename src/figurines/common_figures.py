@@ -7,7 +7,7 @@ from utilities import *
 from colors import *
 
 class Soldier(Figurine):
-    def __init__(self, game):
+    def __init__(self, game, stx_board, sty_board):
         self.g = game
         self.img_file = "../sprites/soldier.png"
         self.img = pygame.image.load(self.img_file).convert_alpha()
@@ -15,8 +15,8 @@ class Soldier(Figurine):
         self.h = TILESIZE_H
         self._layer = FIGURINE_LAYER
         groups = self.g.all_sprites_group
-        stx = 100
-        sty = 100
+        stx = stx_board
+        sty = sty_board
 
         Figurine.__init__(self, self.g, self.w, self.h, self.img, groups, stx, sty)
 

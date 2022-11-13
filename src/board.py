@@ -2,15 +2,17 @@ import pygame
 from config import *
 
 class Board:
-    def __init__(self, game, num):
+    def __init__(self, game, num, stx, sty):
         self.game = game
         self.boardNum = num
+        self.startx = stx
+        self.starty = sty
         self.drawBoard()
 
     def drawBoard(self):
         for x in range(self.boardNum):
             for y in range(self.boardNum):
-                Tile(self.game, x * TILESIZE_W, y * TILESIZE_H)
+                Tile(self.game, self.startx + x * TILESIZE_W, self.starty + y * TILESIZE_H)
 
 
 class Tile (pygame.sprite.Sprite):

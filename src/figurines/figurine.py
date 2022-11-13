@@ -15,7 +15,7 @@ class State(Enum):
     DEATH = 5
 
 class Figurine(pygame.sprite.Sprite):
-    def __init__(self, game, width, height, img, groups, stx, sty):
+    def __init__(self, game, width, height, img, groups, stx_board, sty_board):
         pygame.sprite.Sprite.__init__(self, groups)
         self.game = game
         self.width = width
@@ -24,12 +24,11 @@ class Figurine(pygame.sprite.Sprite):
         self.image.blit(img, (0,0), (0,0,self.width, self.height))
         self.image.set_colorkey(VOID)
         self.rect = self.image.get_rect()
-        self.rect.x = stx
-        self.rect.y = sty
+        self.rect.x, self.rect.y = BoardToPixel(stx_board, sty_board)
 
-        self.current_pos_board = [0,0]
-        self.board_src = [0,0]
-        self.board_dest = [0,0]
+        self.current_pos_board = [stx_board,sty_board]
+        self.board_src = [stx_board,sty_board]
+        self.board_dest = [stx_board,sty_board]
 
         self.state = State.IDLE
         self.state = self.ChangeState(State.MOVING)
@@ -72,4 +71,6 @@ class Figurine(pygame.sprite.Sprite):
 
     def Moving(self):
         pass
+
+
 
